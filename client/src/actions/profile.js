@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { setAlert } from './alert';
 
-import { GET_PROFILE, PROFILE_ERROR } from './types';
+import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE } from './types';
 
-//get current user
+// Get current users profile
 export const getCurrentProfile = () => async (dispatch) => {
   try {
     const res = await axios.get('/api/profile/me');
+
     dispatch({
       type: GET_PROFILE,
       payload: res.data,
@@ -14,7 +15,7 @@ export const getCurrentProfile = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: err.response.status.text, status: err.response.status },
+      payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };

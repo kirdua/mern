@@ -2,4 +2,3 @@ node_modules/
 config/default.json
 .DS_Store
 routes/.DS_Store
-package-lock.json
